@@ -1,0 +1,32 @@
+package com.apple.ratinginfoservice.resource;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/ratingdata")
+public class RatingResouce{
+
+	@RequestMapping("/{movieid}")
+	public Rating getRating(@PathVariable("movieid") String moviesid){
+		return new Rating("Moviveid",4);
+	}
+	
+	
+	@RequestMapping("users/{userid}")
+	public UserRaiting getUserRating(@PathVariable("userid") String userid){
+		List<Rating> ratings=Arrays.asList(
+				new Rating("1234", 4),
+				new Rating("5678", 3)
+				);
+		UserRaiting userrating=new UserRaiting();
+		userrating.setUserRating(ratings);
+		return userrating;
+	}
+	
+	
+}
